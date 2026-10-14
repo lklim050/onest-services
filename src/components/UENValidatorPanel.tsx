@@ -35,9 +35,31 @@ const UENValidatorPanel = () => {
       {/* RESULT */}
       {result && (
         <div>
-          <p>{result.isValid ? "YES VALID!!" : "NO INVALID!!"}</p>
-          <p>{result.formatType}</p>
-          <p>{result.message}</p>
+          <p>
+            Is UEN valid?:{" "}
+            <span>{result.isValid ? "YES VALID!!" : "NO INVALID!!"}</span>
+          </p>
+          <p>
+            What format?: <span>{result.formatType}</span>
+          </p>
+          {result.metadata && (
+            <p>
+              Entity Type: <span>{result.metadata?.entityType || "N.A."}</span>
+              <br />
+              Issued By:{" "}
+              <span>{result.metadata?.issuanceAgency || "N.A."}</span>
+            </p>
+          )}
+
+          <p>
+            Comment: <span>{result.message}</span>
+          </p>
+          {result.year && (
+            <p>
+              Incorporation Year: <span>{result.year || "N.A."}</span>
+            </p>
+          )}
+
           <p>{result.length}</p>
         </div>
       )}
