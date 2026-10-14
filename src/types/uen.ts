@@ -14,4 +14,5 @@ export interface ValidationResult {
   formatType: UENFormatType;
   metadata?: UENMetadata;
   message: string;
+  length: number;
 }

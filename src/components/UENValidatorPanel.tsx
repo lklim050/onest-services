@@ -35,9 +35,10 @@ const UENValidatorPanel = () => {
       {/* RESULT */}
       {result && (
         <div>
-          <span>{result.isValid ? "YES VALID!!" : "NO INVALID!!"}</span>
-          <span>{result.formatType}</span>
-          <span>{result.message}</span>
+          <p>{result.isValid ? "YES VALID!!" : "NO INVALID!!"}</p>
+          <p>{result.formatType}</p>
+          <p>{result.message}</p>
+          <p>{result.length}</p>
         </div>
       )}
     </div>
