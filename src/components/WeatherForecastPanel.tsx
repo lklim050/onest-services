@@ -21,8 +21,8 @@ export function WeatherForecastPanel() {
   return (
     <div>
       <h1>Weather Panel Here</h1>
-      <WeatherTable />
-      {JSON.stringify(data.data.items)}
+      <WeatherTable data={data} />
+      {/* {JSON.stringify(data.update_timestamp)} */}
     </div>
   );
 }
