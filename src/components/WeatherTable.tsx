@@ -9,10 +9,10 @@ interface WeatherTableProps {
 export const WeatherTable: React.FC<WeatherTableProps> = ({ data }) => {
   const forecasts = data?.data?.items?.[0]?.forecasts || [];
 
-  // to add later
-  const filteredForecasts = forecasts.filter((item) =>
-    item.area.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
+  //   // to add later
+  //   const filteredForecasts = forecasts.filter((item) =>
+  //     item.area.toLowerCase().includes(searchTerm.toLowerCase()),
+  //   );
 
   if (forecasts.length === 0) {
     return <p>No weather forecast data available.</p>;
