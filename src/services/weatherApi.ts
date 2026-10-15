@@ -1,15 +1,37 @@
 const WEATHER_API_URL =
   "https://api-open.data.gov.sg/v2/real-time/api/two-hr-forecast";
 
-// export interface WeatherResponse {}
+export interface ForecastItem {
+  area: string;
+  forecast: string;
+}
 
-export async function fetchWeatherForecast(): Promise<any> {
+export interface WeatherValidPeriod {
+  text: string;
+  start: string;
+  end: string;
+}
+
+export interface WeatherItem {
+  update_timestamp: string;
+  valid_period: WeatherValidPeriod;
+  forecasts: ForecastItem[];
+}
+
+export interface WeatherData {
+  code: number;
+  data: {
+    items: WeatherItem[];
+  };
+}
+
+export async function fetchWeatherForecast(): Promise<WeatherData> {
   const res = await fetch(WEATHER_API_URL);
 
   if (!res.ok) {
     throw new Error(`Failed to fetch weather data, message: ${res.status}`);
   }
-  const data = await res.json();
 
+  const data: WeatherData = await res.json();
   return data;
 }
