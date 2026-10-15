@@ -14,7 +14,7 @@ const UENValidatorPanel = () => {
 
   return (
     <div>
-      <h1>test render</h1>
+      <h1>UEN Validator Here</h1>
       {/* INPUT */}
       <form onSubmit={handleSubmit}>
         <input

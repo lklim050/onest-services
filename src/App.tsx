@@ -1,4 +1,5 @@
 import UENValidatorPanel from "./components/UENValidatorPanel";
+import WeatherForecastPanel from "./components/WeatherForecastPanel";
 
 export function App() {
   return (
@@ -15,6 +16,7 @@ export function App() {
       <main>
         {/* Render our UEN Validator Component */}
         <UENValidatorPanel />
+        <WeatherForecastPanel />
       </main>
     </div>
   );
