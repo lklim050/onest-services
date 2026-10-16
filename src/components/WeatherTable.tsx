@@ -30,7 +30,7 @@ export const WeatherTable: React.FC<WeatherTableProps> = ({ data }) => {
           placeholder="Filter by area (e.g., Ang Mo Kio)..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="flex-1 px-4 py-2 border border-gray-300"
+          className="flex-1 px-4 py-2 border border-gray-300 text-blue"
         />
       </div>
       <br />

@@ -13,7 +13,7 @@ const UENValidatorPanel = () => {
   };
 
   return (
-    <div>
+    <div className="bg-black">
       <h1>UEN Validator Here</h1>
       {/* INPUT */}
       <form onSubmit={handleSubmit}>
