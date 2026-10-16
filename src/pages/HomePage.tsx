@@ -25,9 +25,7 @@ export function HomePage() {
           to="/weather-forecast"
           className="p-5 bg-white border border-gray-200 rounded-lg hover:border-blue-500"
         >
-          <h2 className="font-semibold text-base mb-1">
-            2-Hour Weather Forecast
-          </h2>
+          <h2 className="font-semibold text-base mb-1">Weather Forecast</h2>
           <p className="text-sm text-gray-500">
             Check real-time NEA weather conditions across Singapore regions.
           </p>
