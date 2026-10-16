@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Link, Route, Routes } from "react-router-dom";
 // import UENValidatorPanel from "./components/UENValidatorPanel";
 // import WeatherForecastPanel from "./components/WeatherForecastPanel";
 import HomePage from "./pages/HomePage";
@@ -7,18 +7,25 @@ import WeatherPage from "./pages/WeatherPage";
 
 export function App() {
   return (
-    <div>
-      <nav className="p-20">
-        <h1>Nav Bar here</h1>
-        <a href="/">Home</a>
-        <a href="/uen-validator">UEN Validator</a>
-        <a href="/weather-forecast">Weather Forecast</a>
+    <div className="min-h-screen bg-gray-50 text-black">
+      <nav className="border-b border-white-300 bg-gray-300 px-6 py-4">
+        <div className="flex items-center justify-between mx-auto max-w-4xl ">
+          <Link to="/" className="font-bold text-xl">
+            OneST Service
+          </Link>
+          <div className="flex space-x-6 text-m font-medium">
+            <Link to="/uen-validator">UEN Validator</Link>
+            <Link to="/weather-forecast">Weather Forecast</Link>
+          </div>
+        </div>
       </nav>
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/uen-validator" element={<UenPage />} />
-        <Route path="/weather-forecast" element={<WeatherPage />} />
-      </Routes>
+      <main className="max-w-4xl mx-auto px-6 py-8">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/uen-validator" element={<UenPage />} />
+          <Route path="/weather-forecast" element={<WeatherPage />} />
+        </Routes>
+      </main>
     </div>
   );
 }
