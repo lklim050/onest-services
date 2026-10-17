@@ -45,7 +45,26 @@ npm run dev
 
 ## Run Tests with Playwright
 
-1. At your termianl, execute the following command to run all tests:
+This project features a comprehensive End-to-End (E2E) testing suite built with **Playwright and TypeScript**, covering user workflows, network mocking, and edge-case handling across 3 core modules.
+
+### Test Coverage Breakdown (19 Tests)
+
+1. **Navigation & Core Flow (`pages.spec.ts`)**:
+   - Validates multi-page routing between Home, UEN Validator, and Weather Forecast.
+   - Tests system diagnostics and API health status rendering.
+   - **Network Interception:** Simulates online/offline states and `503` service unavailable scenarios using `page.route()`.
+
+2. **UEN Validator Workflow (`uenValidatorPanel.spec.ts`)**:
+   - Covers all UEN formats (Business, Local Company, Other Entity) with expected results (`VALID UEN`).
+   - Validates edge-case such as empty input and short/invalid length rejection handling (`INVALID UEN`).
+   - Tests power-user interactions: keyboard `Enter` submission, Quick-Fill buttons, input clearing, and modal lifecycle management (Guide/Help reference).
+
+3. **Weather Forecast Workflow (`weatherForecastPanel.spec.ts`)**:
+   - Verifies Weather table rendering and real-time data attributes.
+   - Tests partial-string filtering, zero-result handling, and filter clearing to restore full region lists.
+   - Validates manual refresh actions.
+
+4. At your terminal, execute the following command to run all tests:
 
 ```bash
 npx playwright test

@@ -112,6 +112,7 @@ export const WeatherTable: React.FC<WeatherTableProps> = ({
       <div className="flex gap-2">
         <input
           type="text"
+          id="area"
           placeholder="Filter by area (e.g., Ang Mo Kio)..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
@@ -123,6 +124,12 @@ export const WeatherTable: React.FC<WeatherTableProps> = ({
           className="px-4 py-2 bg-black text-white text-sm font-medium rounded hover:bg-gray-800 disabled:opacity-50 cursor-pointer"
         >
           {isRefreshing ? "Refreshing..." : "Refresh"}
+        </button>
+        <button
+          onClick={() => setSearchTerm("")}
+          className="px-2.5 py-1 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-mono"
+        >
+          Clear
         </button>
       </div>
 
