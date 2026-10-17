@@ -12,15 +12,13 @@ export function validateUEN(input: string): ValidationResult {
       isValid: false,
       formatType: "Unknown/Invalid Format",
       message: "You did not input anything",
-      length: uen.length,
     };
   }
   if (uen.length < 9 || uen.length > 10) {
     return {
       isValid: false,
       formatType: "Unknown/Invalid Format",
-      message: "UEN is either 9 or 10 characters long",
-      length: uen.length,
+      message: `A valid UEN is either 9 or 10 characters long. Your input "${uen}" has ${uen.length} characters`,
     };
   }
 
@@ -28,10 +26,9 @@ export function validateUEN(input: string): ValidationResult {
   if (formatARegex.test(uen)) {
     return {
       isValid: true,
-      formatType: "Format A (old format for businesses)",
+      formatType: "Businesses (ACRA)",
       metadata: ACRA_DEFAULT_METADATA,
-      message: "Valid Format A UEN (Businesses registered).",
-      length: uen.length,
+      message: "Valid UEN (Businesses).",
     };
   }
 
@@ -41,11 +38,10 @@ export function validateUEN(input: string): ValidationResult {
 
     return {
       isValid: true,
-      formatType: "Format B (old format for local companies)",
+      formatType: "Local Companies (ACRA)",
       metadata: ACRA_DEFAULT_METADATA,
-      message: `Valid Format B UEN (Local company).`,
+      message: `Your input ${uen} is a Valid UEN strucure (Local Companies).`,
       year,
-      length: uen.length,
     };
   }
 
@@ -65,25 +61,22 @@ export function validateUEN(input: string): ValidationResult {
       return {
         isValid: false,
         formatType: "Unknown/Invalid Format",
-        message: `Invalid entity type indicator '${entityIndicator}' in Format C UEN.`,
-        length: uen.length,
+        message: `Invalid entity type indicator '${entityIndicator}'.`,
       };
     }
 
     return {
       isValid: true,
-      formatType: "Format C (new format)",
+      formatType: "All Other Entities",
       metadata,
-      message: `Valid Format C UEN structure. Company registered in year ${year}`,
+      message: "Valid UEN structure.",
       year,
-      length: uen.length,
     };
   }
 
   return {
     isValid: false,
     formatType: "Unknown/Invalid Format",
-    message: uen,
-    length: uen.length,
+    message: `Please check your input "${uen}"`,
   };
 }

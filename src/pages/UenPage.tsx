@@ -5,7 +5,7 @@ import { useState } from "react";
 
 export const UenPage = () => {
   const [isHealthModalOpen, setIsHealthModalOpen] = useState(false);
-  const [isUenModalOpen, setIsUenModalOpen] = useState(false);
+
   return (
     <div className="space-y-6">
       <div className="flex items-center justify-between">

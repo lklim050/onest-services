@@ -4,9 +4,9 @@ export interface UENMetadata {
 }
 
 export type UENFormatType =
-  | "Format A (old format for businesses)"
-  | "Format B (old format for local companies)"
-  | "Format C (new format)"
+  | "Businesses (ACRA)"
+  | "Local Companies (ACRA)"
+  | "All Other Entities"
   | "Unknown/Invalid Format";
 
 export interface ValidationResult {
@@ -15,5 +15,4 @@ export interface ValidationResult {
   metadata?: UENMetadata;
   message: string;
   year?: number;
-  length: number;
 }

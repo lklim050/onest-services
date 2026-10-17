@@ -48,34 +48,36 @@ const UENValidatorPanel = () => {
       {/* QuickFill Options */}
       <div className="flex flex-col gap-2 text-xs">
         <p className="text-gray-500 font-medium">Click to Quick Fill:</p>
-        <div className="flex gap-6">
+        <div className="flex items-center gap-6">
           <button
             type="button"
-            onClick={() => handleQuickFill("12301234K")}
-            className="px-2.5 py-1 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-sans"
+            onClick={() => handleQuickFill("01234567K")}
+            className="px-2.5 py-2 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-sans"
           >
-            12301234K (Pre-2008 Business)
+            01234567K <span className="flex items-center">(Business)</span>
           </button>
           <button
             type="button"
             onClick={() => handleQuickFill("199801234Z")}
-            className="px-2.5 py-1 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-sans"
+            className="px-2.5 py-2 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-sans"
           >
-            199801234Z (Pre-2008 Local Co.)
+            199801234Z{" "}
+            <span className="flex items-center"> (Local Company)</span>
           </button>
           <button
             type="button"
-            onClick={() => handleQuickFill("T08LL0001A")}
-            className="px-2.5 py-1 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-sans"
+            onClick={() => handleQuickFill("T08HC0001A")}
+            className="px-2.5 py-2 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-sans"
           >
-            T08LL0001A (New Format )
+            T08HC0001A{" "}
+            <span className="flex items-center">(Other Entities)</span>
           </button>
           <button
             type="button"
             onClick={() => setIsUenModalOpen(true)}
-            className="px-2.5 py-1 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-sans"
+            className="ml-auto px-3 py-2 bg-gray-200 border border-gray-600 rounded hover:bg-gray-300 text-gray-800 cursor-pointer font-sans"
           >
-            How to fill?
+            Guide / Help
           </button>
         </div>
       </div>
@@ -109,12 +111,10 @@ const UENValidatorPanel = () => {
               <span className="font-medium">{result.formatType || "N.A."}</span>
             </div>
 
-            {result.year && (
-              <div className="flex justify-between">
-                <span className="text-gray-500">Incorporation Year:</span>
-                <span className="font-medium">{result.year}</span>
-              </div>
-            )}
+            <div className="flex justify-between">
+              <span className="text-gray-500">Incorporation Year:</span>
+              <span className="font-medium">{result.year || "N.A."}</span>
+            </div>
 
             {result.metadata && (
               <>
