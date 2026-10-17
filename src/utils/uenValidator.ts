@@ -14,11 +14,18 @@ export function validateUEN(input: string): ValidationResult {
       message: "You did not input anything",
     };
   }
-  if (uen.length < 9 || uen.length > 10) {
+  if (uen.length > 10) {
     return {
       isValid: false,
       formatType: "Unknown/Invalid Format",
-      message: `A valid UEN is either 9 or 10 characters long. Your input "${uen}" has ${uen.length} characters`,
+      message: `Too Long! A valid UEN is either 9 or 10 characters long. Your input "${uen}" has ${uen.length} characters`,
+    };
+  }
+  if (uen.length < 9) {
+    return {
+      isValid: false,
+      formatType: "Unknown/Invalid Format",
+      message: `Too short! A valid UEN is either 9 or 10 characters long. Your input "${uen}" has ${uen.length} characters`,
     };
   }
 

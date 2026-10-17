@@ -59,7 +59,7 @@ export const APIHealthModal: React.FC<APIHealthModalProps> = ({
 
           <div className="p-3 bg-gray-50 border border-gray-200 rounded space-y-2">
             <div className="flex justify-between items-center">
-              <span>NEA Weather API:</span>
+              <span>Weather API (data.gov.sg):</span>
               <span
                 className={`font-semibold ${
                   apiStatus === "success"

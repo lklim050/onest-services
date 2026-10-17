@@ -33,7 +33,7 @@ test.describe("UEN Workflow", () => {
   //     await page.goto("/uen-validator");
   //     // Step 2: Enter a valid UEN into input field
   //     const inputField = page.locator("#uen");
-  //     await inputField.fill("199801234A");
+  //     await inputField.fill("199801234Z");
   //     // Step 3: Click Validate button
   //     await page.getByRole("button", { name: /validate/i }).click();
   //     // Step 4: Verify result (success)
@@ -92,6 +92,13 @@ test.describe("UEN Workflow", () => {
   //       page.getByText("Unknown/Invalid Format", { exact: true }),
   //     ).toBeVisible();
   //   });
+  //   test("Press Enter on input to trigger validate", async ({ page }) => {
+  //     await page.goto("/uen-validator");
+  //     const inputField = page.locator("#uen");
+  //     await inputField.fill("199801234Z");
+  //     await inputField.press("Enter");
+  //     await expect(page.locator("span", { hasText: "VALID UEN" })).toBeVisible();
+  //   });
   //   test("Click Clear Button to clear text in input box", async ({ page }) => {
   //     // Step 1: Go to /uen-validator
   //     await page.goto("/uen-validator");
@@ -119,7 +126,7 @@ test.describe("UEN Workflow", () => {
   //         exact: true,
   //       }),
   //     ).toBeVisible();
-  //     await page.getByRole("button", { name: /close reference|x/i }).click();
+  //     await page.getByRole("button", { name: /close reference/i }).click();
   //     await expect(
   //       page.getByText("UEN Structure & Entity Type Indicator Reference", {
   //         exact: true,
