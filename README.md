@@ -1,75 +1,72 @@
-# React + TypeScript + Vite
+# OneST Service Utility Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web application that provides a unified platform for accessing various services and utilities. The portal is designed to enhance user experience by offering a seamless interface for navigating through different service offerings.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. UEN Validator: A tool to verify Singapore company and entity registration numbers based on 3 formats:
 
-## React Compiler
+- Business UEN (format: nnnnnnnnX, 9 digits)
+- Local Company UEN (format: yyyynnnnnX, 10 digits)
+- Other Entity UEN (format: TyyPQnnnnX, 10 digits)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+2. Weather Forecast: A feature that provides real-time NEA weather conditions across Singapore regions up to 2 hours in advance.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Frontend: React.js
+- Styling: Tailwind CSS
+- Language: TypeScript
+- Testing: Playwright
+- External: External APIs for weather data
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Installation
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+1. Go to https://github.com/lklim050/onest-services and download the source code.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+OR at your terminal, run the following commands:
+
+```bash
+git clone https://github.com/lklim050/onest-services.git
+cd onest-services
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+## Run Tests with Playwright
+
+1. At your termianl, execute the following command to run all tests:
+
+```bash
+npx playwright test
+```
+
+OR in UI mode, run:
+
+```bash
+npx playwright test --ui
 
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+## Project Structure
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+src/
+├── components/ # Reusable UI components & Modals (e.g., UEN Help Modal)
+├── data/ # Data files and mock data
+├── pages/ # Main views (UenValidator, WeatherForecast, Home)
+├── services/ # API fetching and data processing
+├── utils/ # Validation logic & helper functions
+├── App.tsx # Application routing and layout wrapper
+└── main.tsx # Application entry point
+tests/
+└── uenValidatorPanel.spec.ts # Playwright E2E test suites
