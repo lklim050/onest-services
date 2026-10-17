@@ -28,7 +28,7 @@ export function validateUEN(input: string): ValidationResult {
       isValid: true,
       formatType: "Businesses (ACRA)",
       metadata: ACRA_DEFAULT_METADATA,
-      message: "Valid UEN (Businesses).",
+      message: `Your input ${uen} is a Valid UEN strucure (Business).`,
     };
   }
 
