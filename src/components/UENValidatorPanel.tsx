@@ -1,15 +1,21 @@
 import React, { useState } from "react";
 import type { ValidationResult } from "../types/uen";
 import { validateUEN } from "../utils/uenValidator";
+import HowToFillUenModal from "./HowToFillUenModal";
 
 const UENValidatorPanel = () => {
   const [input, setInput] = useState("");
   const [result, setResult] = useState<ValidationResult | null>(null);
+  const [isUenModalOpen, setIsUenModalOpen] = useState(false);
 
   const handleSubmit = (e: React.SubmitEvent) => {
     e.preventDefault();
     const validationResult = validateUEN(input.trim());
     setResult(validationResult);
+  };
+
+  const handleQuickFill = (uen: string) => {
+    setInput(uen);
   };
 
   return (
@@ -30,8 +36,49 @@ const UENValidatorPanel = () => {
         >
           Validate
         </button>
+        <button
+          type="button"
+          onClick={() => handleQuickFill("")}
+          className="px-2.5 py-1 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-mono"
+        >
+          Clear
+        </button>
       </form>
 
+      {/* QuickFill Options */}
+      <div className="flex flex-col gap-2 text-xs">
+        <p className="text-gray-500 font-medium">Click to Quick Fill:</p>
+        <div className="flex gap-6">
+          <button
+            type="button"
+            onClick={() => handleQuickFill("12301234K")}
+            className="px-2.5 py-1 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-sans"
+          >
+            12301234K (Pre-2008 Business)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickFill("199801234Z")}
+            className="px-2.5 py-1 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-sans"
+          >
+            199801234Z (Pre-2008 Local Co.)
+          </button>
+          <button
+            type="button"
+            onClick={() => handleQuickFill("T08LL0001A")}
+            className="px-2.5 py-1 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-sans"
+          >
+            T08LL0001A (New Format )
+          </button>
+          <button
+            type="button"
+            onClick={() => setIsUenModalOpen(true)}
+            className="px-2.5 py-1 bg-gray-100 border border-gray-300 rounded hover:bg-gray-200 text-gray-700 cursor-pointer font-sans"
+          >
+            How to fill?
+          </button>
+        </div>
+      </div>
       {/* Result Panel */}
       {result && (
         <div
@@ -95,6 +142,10 @@ const UENValidatorPanel = () => {
           </div>
         </div>
       )}
+      <HowToFillUenModal
+        isOpen={isUenModalOpen}
+        onClose={() => setIsUenModalOpen(false)}
+      />
     </div>
   );
 };
