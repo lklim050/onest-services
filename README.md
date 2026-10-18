@@ -1,16 +1,43 @@
+### Visual Preview
+
+|            Home Dashboard            |           UEN Validator            |              Weather Forecast              |
+| :----------------------------------: | :--------------------------------: | :----------------------------------------: |
+| ![Home](./assets/final-homepage.png) | ![UEN](./assets/final-uenpage.png) | ![Weather](./assets/final-weatherpage.png) |
+
 # OneST Service Utility Portal
 
 A modern web application that provides a unified platform for accessing various services and utilities. The portal is designed to enhance user experience by offering a seamless interface for navigating through different service offerings.
 
-## Features
+![Home Page Screenshot](./assets/final-homepage.png)
 
-1. UEN Validator: A tool to verify Singapore company and entity registration numbers based on 3 formats:
+## Feature 1
+
+### UEN Validator
+
+A tool to verify Singapore company and entity registration numbers based on 3 formats:
 
 - Business UEN (format: nnnnnnnnX, 9 digits)
 - Local Company UEN (format: yyyynnnnnX, 10 digits)
 - Other Entity UEN (format: TyyPQnnnnX, 10 digits)
 
-2. Weather Forecast: A feature that provides real-time NEA weather conditions across Singapore regions up to 2 hours in advance.
+Result with details are displayed as either "VALID UEN" or "INVALID UEN" based on the input provided.
+![UEN Page Screenshot](./assets/final-uenpage.png)
+
+Modal available for user guidance on UEN formats and validation rules.
+![UEN Modal Screenshot](./assets/modaluenguide.png)
+
+## Feature 2
+
+### Weather Forecast:
+
+A feature that provides real-time NEA weather conditions across Singapore regions up to 2 hours in advance.
+
+Search function is available to filter by region name, with case-insensitive matching and partial string support. Users can also refresh the data manually to get the latest updates.
+![Weather Page Screenshot](./assets/final-weatherpage.png)
+
+API Health Check is implemented to ensure the service is operational, with appropriate error handling for network issues or service unavailability.
+
+![Weather API Health Check Screenshot](./assets/modalapicheck.png)
 
 ## Tech Stack
 
@@ -47,7 +74,7 @@ npm run dev
 
 This project features a comprehensive End-to-End (E2E) testing suite built with **Playwright and TypeScript**, covering user workflows, network mocking, and edge-case handling across 3 core modules.
 
-### Test Coverage Breakdown (19 Tests)
+### Test Coverage Breakdown (20 Tests)
 
 1. **Navigation & Core Flow (`pages.spec.ts`)**:
    - Validates multi-page routing between Home, UEN Validator, and Weather Forecast.
@@ -70,6 +97,8 @@ This project features a comprehensive End-to-End (E2E) testing suite built with 
 npx playwright test
 ```
 
+![Playwright Test Terminal](./assets/playwright-test.png)
+
 OR in UI mode, run:
 
 ```bash
@@ -77,15 +106,21 @@ npx playwright test --ui
 
 ```
 
+![Playwright Test UI](./assets/playwright-test-ui.png)
+
 ## Project Structure
 
 src/
+├── assets/ # screenshots for README
 ├── components/ # Reusable UI components & Modals (e.g., UEN Help Modal)
-├── data/ # Data files and mock data
-├── pages/ # Main views (UenValidator, WeatherForecast, Home)
+├── data/ # Data files and API sample data
+├── pages/ # Main views (UenPage, WeatherPage, HomePage)
 ├── services/ # API fetching and data processing
 ├── utils/ # Validation logic & helper functions
+├── types/ # TypeScript type definitions
 ├── App.tsx # Application routing and layout wrapper
 └── main.tsx # Application entry point
 tests/
-└── uenValidatorPanel.spec.ts # Playwright E2E test suites
+├── pages.spec.ts # Navigation & API routing E2E tests
+├── uenValidatorPanel.spec.ts # UEN validation & workflow E2E tests
+└── weatherForecastPanel.spec.ts # Weather table & filtering E2E tests
