@@ -61,7 +61,7 @@ This project features a comprehensive End-to-End (E2E) testing suite built with 
 
 3. **Weather Forecast Workflow (`weatherForecastPanel.spec.ts`)**:
    - Verifies Weather table rendering and real-time data attributes.
-   - Tests partial-string filtering, zero-result handling, and filter clearing to restore full region lists.
+   - Tests partial-string filtering, case-insensitivity, and zero-result handling, and filter clearing to restore full region lists.
    - Validates manual refresh actions.
 
 4. At your terminal, execute the following command to run all tests:
