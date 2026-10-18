@@ -159,11 +159,11 @@ export const WeatherTable: React.FC<WeatherTableProps> = ({
       {forecasts.length === 0 ? (
         <p className="text-sm text-gray-500 py-4 text-center">
           No weather forecast data available. You may click "Check API Status"
-          button on top right corner to check.
+          button on top right corner to check external API status.
         </p>
       ) : filteredForecasts.length === 0 ? (
         <p className="text-sm text-gray-500 py-4 text-center">
-          No matching locations found for "{searchTerm}".
+          No matching locations found for "{searchTerm}". Try another name.
         </p>
       ) : (
         <div>

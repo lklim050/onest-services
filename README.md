@@ -47,6 +47,25 @@ API Health Check is implemented to ensure the service is operational, with appro
 - Testing: Playwright
 - External: External APIs for weather data
 
+## Project Structure
+
+```text
+src/
+├── assets/ # screenshots for README
+├── components/ # Reusable UI components & Modals
+├── data/ # Data files and API sample data
+├── pages/ # Main views (UenPage, WeatherPage, HomePage)
+├── services/ # API fetching and data processing
+├── utils/ # Validation logic & helper functions
+├── types/ # TypeScript type definitions
+├── App.tsx # Application routing and layout wrapper
+└── main.tsx # Application entry point
+tests/
+├── pages.spec.ts # Navigation & API routing E2E tests
+├── uenValidatorPanel.spec.ts # UEN validation & workflow E2E tests
+└── weatherForecastPanel.spec.ts # Weather table & filtering E2E tests
+```
+
 ## Installation
 
 1. Go to https://github.com/lklim050/onest-services and download the source code.
@@ -107,20 +126,3 @@ npx playwright test --ui
 ```
 
 ![Playwright Test UI](./assets/playwright-test-ui.png)
-
-## Project Structure
-
-src/
-├── assets/ # screenshots for README
-├── components/ # Reusable UI components & Modals (e.g., UEN Help Modal)
-├── data/ # Data files and API sample data
-├── pages/ # Main views (UenPage, WeatherPage, HomePage)
-├── services/ # API fetching and data processing
-├── utils/ # Validation logic & helper functions
-├── types/ # TypeScript type definitions
-├── App.tsx # Application routing and layout wrapper
-└── main.tsx # Application entry point
-tests/
-├── pages.spec.ts # Navigation & API routing E2E tests
-├── uenValidatorPanel.spec.ts # UEN validation & workflow E2E tests
-└── weatherForecastPanel.spec.ts # Weather table & filtering E2E tests
