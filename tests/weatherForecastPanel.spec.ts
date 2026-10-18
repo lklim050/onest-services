@@ -45,4 +45,23 @@ test.describe("Weather Panel workflow", async () => {
     await expect(page.getByText(/validity period:/i)).toBeVisible();
     await expect(page.getByRole("table")).toBeVisible();
   });
+
+  test("Check if input is case-insensitive", async ({ page }) => {
+    await page.goto("/weather-forecast");
+
+    const inputField = page.locator("#area");
+
+    await test.step("text is all CAPS", async () => {
+      await inputField.fill("CHANGI");
+      await expect(page.getByText("Changi", { exact: true })).toBeVisible();
+    });
+
+    await inputField.clear();
+    await expect(inputField).toHaveValue("");
+
+    await test.step("text is all small", async () => {
+      await inputField.fill("changi");
+      await expect(page.getByText("Changi", { exact: true })).toBeVisible();
+    });
+  });
 });
